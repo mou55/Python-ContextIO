@@ -8,6 +8,7 @@ from requests.exceptions import HTTPError
 
 from contextio.lib.v2_0 import helpers
 from contextio.lib.v2_0.resources.account import Account
+from contextio.lib.v2_0.resources.message import Message
 from contextio.lib.v2_0.resources.connect_token import ConnectToken
 from contextio.lib.v2_0.resources.discovery import Discovery
 from contextio.lib.v2_0.resources.oauth_provider import OauthProvider
