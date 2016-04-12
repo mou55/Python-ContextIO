@@ -12,6 +12,7 @@ from contextio.lib.v2_0.resources.message import Message
 from contextio.lib.v2_0.resources.connect_token import ConnectToken
 from contextio.lib.v2_0.resources.discovery import Discovery
 from contextio.lib.v2_0.resources.oauth_provider import OauthProvider
+from contextio.lib.v2_0.resources.webhook import WebHook
 
 
 class ContextIO(object):
