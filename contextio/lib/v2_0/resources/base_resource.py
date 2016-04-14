@@ -63,9 +63,18 @@ class BaseResource(object):
         return self.parent._request_uri(
             uri, method=method, params=params, headers=headers, body=body)
 
-    def get(self, uri="", return_bool=True, params={}, all_args=[], required_args=[]):
+    def contacts_get(self, uri="", return_bool=True, params={}, all_args=[], required_args=[]):
         response = self._request_uri(uri, params=helpers.sanitize_params(params, all_args, required_args))
         #self.__init__(self.parent, response)
+
+        if return_bool:
+            return True
+
+        return response
+
+    def get(self, uri="", return_bool=True, params={}, all_args=[], required_args=[]):
+        response = self._request_uri(uri, params=helpers.sanitize_params(params, all_args, required_args))
+        self.__init__(self.parent, response)
 
         if return_bool:
             return True

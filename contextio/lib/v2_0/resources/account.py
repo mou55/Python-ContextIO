@@ -146,7 +146,7 @@ class Account(BaseResource):
             'sort_by', 'sort_order'
         ]
 
-        contacts = super(Account, self).get(uri="contacts", return_bool=False, params=params, all_args=all_args)
+        contacts = super(Account, self).contacts_get(uri="contacts", return_bool=False, params=params, all_args=all_args)
 
         return [
             Contact(self, obj) for obj in contacts.get('matches')
