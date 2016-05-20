@@ -112,17 +112,19 @@ class ContextIO(object):
                 method, url, header_auth=True, params=params, headers=headers, data=body)
 
         self._debug(response)
-        if response.status_code >= 200 and response.status_code < 300:
-            try:
-                response_body = response.json()
-            except UnicodeDecodeError:
-                response_body = response.content
-            except ValueError:
-                response_body = response.text
+        try:
+            response_body = response.json()
+        except UnicodeDecodeError:
+            response_body = response.content
+        except ValueError:
+            response_body = response.text
 
+        if response.status_code >= 200 and response.status_code < 300:
             return response_body
         else:
-            raise HTTPError(response=response)
+            raise HTTPError(
+                "Request to {0} failed with HTTP status code {1}: {2}".format(
+                    url, response.status_code, response_body), response=response)
 
 
     def get_accounts(self, **params):
